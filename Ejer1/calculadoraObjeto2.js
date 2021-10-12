@@ -12,19 +12,19 @@ const calculadora = {
 
     lastResult: 0,
 
-    sumar: function(num1,num2){
+    sumar: function(num1,num2) {
         this.lastResult = num1 + num2;
         alert(this.lastResult)
     },
-    restar: function(num1,num2){
+    restar: function(num1,num2) {
         this.lastResult = num1 - num2;
         alert(this.lastResult)
     },
-    multiplicar: function(num1,num2){
+    multiplicar: function(num1,num2) {
         this.lastResult = num1 * num2;
         alert(this.lastResult)
     },
-    dividir: function(num1,num2){
+    dividir: function(num1,num2) {
         this.lastResult = num1 / num2;
         alert(this.lastResult)
     },
@@ -33,7 +33,7 @@ const calculadora = {
 alert("Hola, bienvenido a la calculadora");
 
 
-while(true){
+while(true) {
 
     function operacion(op){
 
@@ -41,9 +41,9 @@ while(true){
             op = prompt ('Elije una de las siguientes operacion: +, -, x, /', ' ');
             op = op.trim();
     
-            if(op === '+' || op === '-' || op === '/' || op === 'x'){
+            if(op === '+' || op === '-' || op === '/' || op === 'x') {
                 //lets go
-            }else{
+            }else {
                 alert("datos introducidos erroneamente, vuelve a probar");
             }
         }while(op !== '+' && op !== '-' && op !== 'x' && op !== '/');
@@ -60,18 +60,18 @@ while(true){
             numeros = numeros.trim();
             myarray = numeros.split(" ");
 
-            if(myarray[0] === 'R'){
+            if(myarray[0] === 'R') {
                 myarray[0] = calculadora.lastResult;
             };
 
-            if(myarray[1] === 'R'){
+            if(myarray[1] === 'R') {
                 myarray[1] = calculadora.lastResult;
             };
 
             array2 = myarray.filter(Number);
             num1 = Number (array2[0]);
             num2 = Number (array2[1]);
-            if(isNaN(num1) === true || isNaN(num2) === true){
+            if(isNaN(num1) === true || isNaN(num2) === true) {
                 alert("Solo se aceptan números");
             };
 
@@ -81,7 +81,7 @@ while(true){
 
     numeradores(numeros);
    
-    switch(op){
+    switch(op) {
         case "x" :
            calculadora.multiplicar(num1,num2);
             break;
@@ -97,7 +97,7 @@ while(true){
     }
 
     let seguir = confirm("Deseas seguir o no?");
-    if(seguir === false){
+    if(seguir === false) {
         break;
     }
 }
