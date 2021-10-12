@@ -4,10 +4,34 @@ let myarray = [];
 let num1 = 0;
 let num2 = 0;
 let array2;
-let borrador;
 
+
+
+
+const calculadora = {
+
+    lastResult: 0,
+
+    sumar: function(num1,num2){
+        this.lastResult = num1 + num2;
+        alert(this.lastResult)
+    },
+    restar: function(num1,num2){
+        this.lastResult = num1 - num2;
+        alert(this.lastResult)
+    },
+    multiplicar: function(num1,num2){
+        this.lastResult = num1 * num2;
+        alert(this.lastResult)
+    },
+    dividir: function(num1,num2){
+        this.lastResult = num1 / num2;
+        alert(this.lastResult)
+    },
+}
 
 alert("Hola, bienvenido a la calculadora");
+
 
 while(true){
 
@@ -19,7 +43,6 @@ while(true){
     
             if(op === '+' || op === '-' || op === '/' || op === 'x'){
                 //lets go
-                alert("funciona")
             }else{
                 alert("datos introducidos erroneamente, vuelve a probar");
             }
@@ -27,8 +50,8 @@ while(true){
         return op;
     };
 
-    let resulop = operacion(op);
-
+   op = operacion(op);
+    
 
     let numeradores = function (numeros){
 
@@ -36,38 +59,40 @@ while(true){
             numeros = prompt ("Pon dos numeros separados por un espacio entre ellos");
             numeros = numeros.trim();
             myarray = numeros.split(" ");
+
+            if(myarray[0] === 'R'){
+                myarray[0] = calculadora.lastResult;
+            };
+
+            if(myarray[1] === 'R'){
+                myarray[1] = calculadora.lastResult;
+            };
+
             array2 = myarray.filter(Number);
             num1 = Number (array2[0]);
             num2 = Number (array2[1]);
             if(isNaN(num1) === true || isNaN(num2) === true){
                 alert("Solo se aceptan números");
-            }
+            };
+
         }while(isNaN(num1) === true || isNaN(num2) === true);
         return num1, num2;
     };
+
     numeradores(numeros);
-
    
-    
-    
-
-    let funMul = (num1, num2) => { return num1 * num2;};
-    let funDiv = (num1, num2) => { return num1 / num2;};
-    let funSum = (num1, num2) => { return num1 + num2;};
-    let funRest = (num1, num2) => { return num1 - num2;};
-
-    switch(resulop){
+    switch(op){
         case "x" :
-           alert( funMul(num1,num2))
+           calculadora.multiplicar(num1,num2);
             break;
         case "/" :
-            alert(funDiv(num1,num2));
+            calculadora.dividir(num1,num2);
             break;
         case "+" :
-            alert(funSum(num1,num2));
+            calculadora.sumar(num1,num2);
             break;
         case "-":
-            alert(funRest(num1,num2));
+           calculadora.restar(num1,num2);
             break;
     }
 
